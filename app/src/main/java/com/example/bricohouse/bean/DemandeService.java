@@ -14,7 +14,7 @@ public class DemandeService implements Serializable {
     private Service service;
     private Planning planning;
     private Date dateAction;// la date de l'acceptation ou refuser
-    private TypeAction typeAction; // accepter & refuser
+    private String typeAction; // accepter & refuser
 
 
     public DemandeService() {
@@ -25,7 +25,7 @@ public class DemandeService implements Serializable {
         this.id = id;
     }
 
-    public DemandeService(Long id, Date datedemande, Client client, Agence agence, String detail, BigDecimal prixTotal, Service service, Planning planning, Date dateAction, TypeAction typeAction) {
+    public DemandeService(Long id, Date datedemande, Client client, Agence agence, String detail, BigDecimal prixTotal, Service service, Planning planning, Date dateAction, String typeAction) {
         this.id = id;
         this.datedemande = datedemande;
         this.client = client;
@@ -110,11 +110,11 @@ public class DemandeService implements Serializable {
         this.dateAction = dateAction;
     }
 
-    public TypeAction getTypeAction() {
+    public String getTypeAction() {
         return typeAction;
     }
 
-    public void setTypeAction(TypeAction typeAction) {
+    public void setTypeAction(String typeAction) {
         this.typeAction = typeAction;
     }
 

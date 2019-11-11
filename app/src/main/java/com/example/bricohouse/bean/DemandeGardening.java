@@ -7,19 +7,24 @@ import java.io.Serializable;
 
         private Long id;
         private DemandeService demandeService;
-        private GardeningType gardeningType;
         private HomeType home;
         private boolean extermination;
-
+        private Boolean bringEquipement = false;
 
         public DemandeGardening() {
         }
 
-        public DemandeGardening(DemandeService demandeService, GardeningType gardeningType, HomeType home, boolean extermination) {
+        public DemandeGardening(DemandeService demandeService, HomeType home, boolean extermination) {
             this.demandeService = demandeService;
-            this.gardeningType = gardeningType;
             this.home = home;
             this.extermination = extermination;
+        }
+
+        public DemandeGardening(DemandeService demandeService, HomeType home, boolean extermination, Boolean bringEquipement) {
+            this.demandeService = demandeService;
+            this.home = home;
+            this.extermination = extermination;
+            this.bringEquipement = bringEquipement;
         }
 
         public boolean isExtermination() {
@@ -42,16 +47,16 @@ import java.io.Serializable;
             return demandeService;
         }
 
+        public Boolean getBringEquipement() {
+            return bringEquipement;
+        }
+
+        public void setBringEquipement(Boolean bringEquipement) {
+            this.bringEquipement = bringEquipement;
+        }
+
         public void setDemandeService(DemandeService demandeService) {
             this.demandeService = demandeService;
-        }
-
-        public GardeningType getGardeningType() {
-            return gardeningType;
-        }
-
-        public void setGardeningType(GardeningType gardeningType) {
-            this.gardeningType = gardeningType;
         }
 
         public HomeType getHome() {

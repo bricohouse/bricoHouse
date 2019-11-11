@@ -7,8 +7,16 @@ public class Home implements Serializable {
 
     private Long id;
     private int nombrePieces;
+    private String piecesType;
 
-    private HomeType homeType;
+
+    public Home() {
+    }
+
+    public Home(int nombrePieces, String piecesType) {
+        this.nombrePieces = nombrePieces;
+        this.piecesType = piecesType;
+    }
 
     public Long getId() {
         return id;
@@ -26,12 +34,12 @@ public class Home implements Serializable {
         this.nombrePieces = nombrePieces;
     }
 
-    public HomeType getHomeType() {
-        return homeType;
+    public String getHomeType() {
+        return piecesType;
     }
 
-    public void setHomeType(HomeType homeType) {
-        this.homeType = homeType;
+    public void setHomeType(String homeType) {
+        this.piecesType = homeType;
     }
 
 

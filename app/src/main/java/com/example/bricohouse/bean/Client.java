@@ -15,7 +15,6 @@ public class Client implements Serializable {
     private String nom;
     private String prenom;
     private String phone;
-    private Secteur secteur;
     private String adresseComplement;
     private User user;
     private List<DemandeService> demandeServices;
@@ -25,31 +24,28 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(String email, String nom, String prenom, String phone, Secteur secteur, String adresseComplement, User user) {
+    public Client(String email, String nom, String prenom, String phone, String adresseComplement, User user) {
         this.email = email;
         this.nom = nom;
         this.prenom = prenom;
         this.phone = phone;
-        this.secteur = secteur;
         this.adresseComplement = adresseComplement;
         this.user = user;
     }
 
-    public Client(String nom, String prenom, String email, String phone, Secteur secteur, String adresseComplement) {
+    public Client(String nom, String prenom, String email, String phone, String adresseComplement) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.phone = phone;
-        this.secteur = secteur;
         this.adresseComplement = adresseComplement;
     }
 
-    public Client(String email, String nom, String prenom, String phone, Secteur secteur, String adresseComplement, Client client, List<DemandeService> demandeServices) {
+    public Client(String email, String nom, String prenom, String phone, String adresseComplement, Client client, List<DemandeService> demandeServices) {
         this.email = email;
         this.nom = nom;
         this.prenom = prenom;
         this.phone = phone;
-        this.secteur = secteur;
         this.adresseComplement = adresseComplement;
         this.user = user;
         this.demandeServices = demandeServices;
@@ -77,17 +73,6 @@ public class Client implements Serializable {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    public Secteur getSecteur() {
-        if (secteur == null) {
-            secteur = new Secteur();
-        }
-        return secteur;
-    }
-
-    public void setSecteur(Secteur secteur) {
-        this.secteur = secteur;
     }
 
     public String getAdresseComplement() {
@@ -152,7 +137,6 @@ public class Client implements Serializable {
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", phone='" + phone + '\'' +
-                ", secteur=" + secteur +
                 ", adresseComplement='" + adresseComplement + '\'' +
                 '}';
     }

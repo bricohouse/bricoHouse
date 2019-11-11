@@ -1,5 +1,7 @@
 package com.example.bricohouse.bean;
 
+import com.example.bricohouse.Nationnalite;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -11,8 +13,11 @@ public class DemandeBabySitting implements Serializable {
     private BigDecimal nbrHeures;
     private BigDecimal nbrKids;
     private IntervalOfAge intervalOfAge;
-    private int genre; // 1= mal, 2= femmal
+    private int age;
+    private String genre; // 1= mal, 2= femmal
     private Boolean fulltime;
+    private Nationnalite nationnalite;
+
 
     public Boolean getFulltime() {
         return fulltime;
@@ -25,15 +30,32 @@ public class DemandeBabySitting implements Serializable {
     public DemandeBabySitting() {
     }
 
-    public DemandeBabySitting(DemandeService demandeService, BigDecimal nbrHeures,IntervalOfAge intervalOfAge, int genre, Boolean fulltime) {
+    public DemandeBabySitting(DemandeService demandeService, BigDecimal nbrHeures, BigDecimal nbrKids, IntervalOfAge intervalOfAge, int age, String genre, Boolean fulltime, Nationnalite nationnalite) {
         this.demandeService = demandeService;
         this.nbrHeures = nbrHeures;
         this.nbrKids = nbrKids;
         this.intervalOfAge = intervalOfAge;
+        this.age = age;
         this.genre = genre;
         this.fulltime = fulltime;
+        this.nationnalite = nationnalite;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Nationnalite getNationnalite() {
+        return nationnalite;
+    }
+
+    public void setNationnalite(Nationnalite nationnalite) {
+        this.nationnalite = nationnalite;
+    }
 
     public DemandeService getDemandeService() {
         return demandeService;
@@ -75,11 +97,11 @@ public class DemandeBabySitting implements Serializable {
         this.intervalOfAge = intervalOfAge;
     }
 
-    public int getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(int genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 

@@ -1,11 +1,9 @@
 package com.example.bricohouse.bean;
 
-
 public class DemandeHomeService {
     private Long id;
     private TypeService typeService;
     private DemandeService demandeService;
-    private Boolean handyman;
     private HomeType home;
 
     public DemandeHomeService() {
@@ -15,14 +13,12 @@ public class DemandeHomeService {
         this.id = id;
         this.typeService = typeService;
         this.demandeService = demandeService;
-        this.handyman = handyman;
         this.home = home;
     }
 
     public DemandeHomeService(TypeService typeService, DemandeService demandeService, Boolean handyman, HomeType home) {
         this.typeService = typeService;
         this.demandeService = demandeService;
-        this.handyman = handyman;
         this.home = home;
     }
 
@@ -48,14 +44,6 @@ public class DemandeHomeService {
 
     public void setDemandeService(DemandeService demandeService) {
         this.demandeService = demandeService;
-    }
-
-    public Boolean getHandyman() {
-        return handyman;
-    }
-
-    public void setHandyman(Boolean handyman) {
-        this.handyman = handyman;
     }
 
     public HomeType getHome() {
@@ -87,7 +75,6 @@ public class DemandeHomeService {
                 "id=" + id +
                 ", typeService=" + typeService +
                 ", demandeService=" + demandeService +
-                ", handyman=" + handyman +
                 ", home=" + home +
                 '}';
     }

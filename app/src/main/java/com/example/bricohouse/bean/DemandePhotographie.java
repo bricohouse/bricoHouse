@@ -6,15 +6,17 @@ public class DemandePhotographie {
     private int nbrPhoto;
     private int nbrCamera;
     private int nbrVideographie;
+    private EventType eventType;
     private DemandeService demandeService;
 
     public DemandePhotographie() {
     }
 
-    public DemandePhotographie(int nbrPhoto, int nbrCamera, int videographie, DemandeService demandeService) {
+    public DemandePhotographie(int nbrPhoto, int nbrCamera, int nbrVideographie, EventType eventType, DemandeService demandeService) {
         this.nbrPhoto = nbrPhoto;
         this.nbrCamera = nbrCamera;
-        this.nbrVideographie = videographie;
+        this.nbrVideographie = nbrVideographie;
+        this.eventType = eventType;
         this.demandeService = demandeService;
     }
 
@@ -56,6 +58,14 @@ public class DemandePhotographie {
 
     public void setDemandeService(DemandeService demandeService) {
         this.demandeService = demandeService;
+    }
+
+    public EventType getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
     }
 
     @Override

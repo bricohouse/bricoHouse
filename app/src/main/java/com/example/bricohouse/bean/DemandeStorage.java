@@ -9,26 +9,23 @@ public class DemandeStorage implements Serializable {
     private Date dateFin;
     private int nbrJours;
     private Ville ville;
-    private TypeStorage typeStorage;
     private DemandeService demandeService;
 
     public DemandeStorage() {
     }
 
-    public DemandeStorage(Date dateDebut, Date dateFin, int nbrJours, Ville ville, TypeStorage typeStorage) {
+    public DemandeStorage(Date dateDebut, Date dateFin, int nbrJours, Ville ville) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.nbrJours = nbrJours;
         this.ville = ville;
-        this.typeStorage = typeStorage;
     }
 
-    public DemandeStorage(Date dateDebut, Date dateFin, int nbrJours, Ville ville, TypeStorage typeStorage, DemandeService demandeService) {
+    public DemandeStorage(Date dateDebut, Date dateFin, int nbrJours, Ville ville, DemandeService demandeService) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.nbrJours = nbrJours;
         this.ville = ville;
-        this.typeStorage = typeStorage;
         this.demandeService = demandeService;
     }
 
@@ -72,14 +69,6 @@ public class DemandeStorage implements Serializable {
         this.ville = ville;
     }
 
-    public TypeStorage getTypeStorage() {
-        return typeStorage;
-    }
-
-    public void setTypeStorage(TypeStorage typeStorage) {
-        this.typeStorage = typeStorage;
-    }
-
     public DemandeService getDemandeService() {
         return demandeService;
     }
@@ -111,7 +100,6 @@ public class DemandeStorage implements Serializable {
                 ", dateFin=" + dateFin +
                 ", nbrJours=" + nbrJours +
                 ", ville=" + ville +
-                ", typeStorage=" + typeStorage +
                 '}';
     }
 }

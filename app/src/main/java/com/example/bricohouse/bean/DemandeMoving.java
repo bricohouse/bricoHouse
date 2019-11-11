@@ -12,12 +12,12 @@ public class DemandeMoving implements Serializable {
     private String adresseArrive;
     private String typeMoving; //national, international
     private Boolean storage;
-    private Boolean handyman;
+
 
     public DemandeMoving() {
     }
 
-    public DemandeMoving(DemandeService demandeService, Ville villeDepart, String adresseDepart, Ville villeArrive, String adresseArrive, String typeMoving, Boolean storage, Boolean handyman) {
+    public DemandeMoving(DemandeService demandeService, Ville villeDepart, String adresseDepart, Ville villeArrive, String adresseArrive, String typeMoving, Boolean storage) {
         this.demandeService = demandeService;
         this.villeDepart = villeDepart;
         this.adresseDepart = adresseDepart;
@@ -25,7 +25,6 @@ public class DemandeMoving implements Serializable {
         this.adresseArrive = adresseArrive;
         this.typeMoving = typeMoving;
         this.storage = storage;
-        this.handyman = handyman;
     }
 
     public DemandeService getDemandeService() {
@@ -83,14 +82,6 @@ public class DemandeMoving implements Serializable {
 
     public void setStorage(Boolean storage) {
         this.storage = storage;
-    }
-
-    public Boolean getHandyman() {
-        return handyman;
-    }
-
-    public void setHandyman(Boolean handyman) {
-        this.handyman = handyman;
     }
 
     public Long getId() {

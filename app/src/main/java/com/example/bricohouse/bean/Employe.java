@@ -12,17 +12,27 @@ public class Employe implements Serializable {
     private String genre; //  male , female
     private String phone;
     private String adresse;
+    private  Agence agence;
 
     public Employe() {
     }
 
-    public Employe(String nom, String prenom, int age, String genre, String phone, String adresse) {
+    public Employe(String nom, String prenom, int age, String genre, String phone, String adresse, Agence agence) {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.genre = genre;
         this.phone = phone;
         this.adresse = adresse;
+        this.agence = agence;
+    }
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
     }
 
     public Long getId() {

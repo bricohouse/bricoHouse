@@ -7,15 +7,11 @@ import java.math.BigDecimal;
 public class DemandeHandyMan implements Serializable {
 
     private Long id;
-    private BigDecimal nbrHeures;
     private BigDecimal nbrHandyMan;
-    private HandymanType handymanType;
     private DemandeService demandeService;
 
-    public DemandeHandyMan(BigDecimal nbrHeures, BigDecimal nbrHandyMan, HandymanType handymanType, DemandeService demandeService) {
-        this.nbrHeures = nbrHeures;
+    public DemandeHandyMan(BigDecimal nbrHeures, BigDecimal nbrHandyMan, DemandeService demandeService) {
         this.nbrHandyMan = nbrHandyMan;
-        this.handymanType = handymanType;
         this.demandeService = demandeService;
     }
 
@@ -35,17 +31,6 @@ public class DemandeHandyMan implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getNbrHeures() {
-        if(nbrHeures == null){
-            nbrHeures = new BigDecimal(0);
-        }
-        return nbrHeures;
-    }
-
-    public void setNbrHeures(BigDecimal nbrHeures) {
-        this.nbrHeures = nbrHeures;
-    }
-
     public BigDecimal getNbrHandyMan() {
         if(nbrHandyMan == null){
             nbrHandyMan = new BigDecimal(0);
@@ -55,14 +40,6 @@ public class DemandeHandyMan implements Serializable {
 
     public void setNbrHandyMan(BigDecimal nbrHandyMan) {
         this.nbrHandyMan = nbrHandyMan;
-    }
-
-    public HandymanType getHandymanType() {
-        return handymanType;
-    }
-
-    public void setHandymanType(HandymanType handymanType) {
-        this.handymanType = handymanType;
     }
 
     @Override

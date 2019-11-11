@@ -8,7 +8,6 @@ public class DemandeCleaning implements Serializable {
     private Long id;
     private DemandeService demandeService;
     private Boolean bringEquipement = false;
-    private BigDecimal nbrHeures;
     private BigDecimal nbrCleaner;
     private Home home;
     private TypeCleaning typeCleaning;
@@ -27,9 +26,8 @@ public class DemandeCleaning implements Serializable {
     public DemandeCleaning() {
     }
 
-    public DemandeCleaning(DemandeService demandeService, BigDecimal nbrHeures, Boolean bringEquipement, BigDecimal nbrCleaner, Home home, TypeCleaning typeCleaning) {
+    public DemandeCleaning(DemandeService demandeService, Boolean bringEquipement, BigDecimal nbrCleaner, Home home, TypeCleaning typeCleaning) {
         this.demandeService = demandeService;
-        this.nbrHeures = nbrHeures;
         this.bringEquipement = bringEquipement;
         this.nbrCleaner = nbrCleaner;
         this.home = home;
@@ -45,17 +43,6 @@ public class DemandeCleaning implements Serializable {
 
     public void setDemandeService(DemandeService demandeService) {
         this.demandeService = demandeService;
-    }
-
-    public BigDecimal getNbrHeures() {
-        if(nbrHeures == null){
-            nbrHeures = new BigDecimal(0);
-        }
-        return nbrHeures;
-    }
-
-    public void setNbrHeures(BigDecimal nbrHeures) {
-        this.nbrHeures = nbrHeures;
     }
 
     public Home getHome() {
@@ -117,7 +104,6 @@ public class DemandeCleaning implements Serializable {
                 "id=" + id +
                 ", demandeService=" + demandeService +
                 ", bringEquipement=" + bringEquipement +
-                ", nbrHeures=" + nbrHeures +
                 ", nbrCleaner=" + nbrCleaner +
                 ", home=" + home +
                 ", typeCleaning=" + typeCleaning +
