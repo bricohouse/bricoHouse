@@ -1,7 +1,5 @@
 package com.example.bricohouse.bean;
 
-import com.example.bricohouse.Nationnalite;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 

@@ -1,6 +1,4 @@
-package com.example.bricohouse;
-
-import com.example.bricohouse.bean.Ville;
+package com.example.bricohouse.bean;
 
 import java.io.Serializable;
 
