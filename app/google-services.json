@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "907127692126",
-    "firebase_url": "https://bricohouse-24394.firebaseio.com",
-    "project_id": "bricohouse-24394",
-    "storage_bucket": "bricohouse-24394.appspot.com"
+    "project_number": "338920225565",
+    "firebase_url": "https://bricohouse-4823c.firebaseio.com",
+    "project_id": "bricohouse-4823c",
+    "storage_bucket": "bricohouse-4823c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:907127692126:android:2bb2598b084f8cd6ea8dcf",
+        "mobilesdk_app_id": "1:338920225565:android:d6b4cdd0946b2ceb8d7ff4",
         "android_client_info": {
           "package_name": "com.example.bricohouse"
         }
       },
       "oauth_client": [
         {
-          "client_id": "907127692126-d1hiiffq0l7ro7fovkpk75glh9t1clmh.apps.googleusercontent.com",
+          "client_id": "338920225565-vnbekb329ruagg7cck1nf3tepdjkniam.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.bricohouse",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "907127692126-rjqq4f9aru9i2lob05fesvavrh2fhprj.apps.googleusercontent.com",
+          "client_id": "338920225565-v1vg7h9skoail5uqa9lg5h2bjjtgo74a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCNXknVzkZ5NEecaeXbb9tNI6H8pwp1KgA"
+          "current_key": "AIzaSyCSKJFWTGQfezrNxKeHZwPgo0ScLDLPqgA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "907127692126-rjqq4f9aru9i2lob05fesvavrh2fhprj.apps.googleusercontent.com",
+              "client_id": "338920225565-v1vg7h9skoail5uqa9lg5h2bjjtgo74a.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -43,7 +43,7 @@ public class Inscription_client extends AppCompatActivity {
         adress=(EditText) findViewById(R.id.adress);
         valider=(Button) findViewById(R.id.valider);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reff= database.getInstance().getReference().child("bean.User");
+        reff= database.getInstance().getReference();
 
 
 
@@ -66,7 +66,9 @@ public class Inscription_client extends AppCompatActivity {
         client.setEmail(email);
         client.setAdresseComplement(adr);
         reff.push().setValue(client);
+        Toast.makeText(Inscription_client.this, "test  firebase", Toast.LENGTH_SHORT).show();
     }
+
 
     }
 
