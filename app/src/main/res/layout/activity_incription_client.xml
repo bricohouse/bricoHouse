@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Incription_client">
+    tools:context=".activity.Inscription_client">
 
 
     <ImageView
@@ -82,17 +82,19 @@
         app:layout_constraintTop_toBottomOf="@+id/mail" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
-        android:text="Button"
+        android:id="@+id/valider"
+        android:layout_width="284dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="20dp"
+        android:text="Valider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintHorizontal_bias="0.59"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adress"
-        app:layout_constraintVertical_bias="0.029" />
+        android:onClick="save"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
