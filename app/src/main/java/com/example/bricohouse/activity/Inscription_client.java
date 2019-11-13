@@ -34,16 +34,17 @@ public class Inscription_client extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incription_client);
-        //Toast.makeText(Inscription_client.this, "wwwwwwwwwwwwajisjdjsidjisjdi", Toast.LENGTH_SHORT).show();
-
+        //Toast.makeText(Inscription_client.this, "test  firebase", Toast.LENGTH_SHORT).show();\
 
         name= (EditText) findViewById(R.id.name);
         last_name= (EditText) findViewById(R.id.last_name);
         phone=(EditText) findViewById(R.id.phone);
         mail=(EditText) findViewById(R.id.mail);
         adress=(EditText) findViewById(R.id.adress);
-            valider=(Button) findViewById(R.id.valider);
-            reff= FirebaseDatabase.getInstance().getReference().child("bean.User");
+        valider=(Button) findViewById(R.id.valider);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        reff= database.getInstance().getReference().child("bean.User");
+
 
 
 
