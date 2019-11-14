@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".activity.MainInscriptionAgence">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="304dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="6dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="name"
+            android:textSize="15sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="name"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="234dp"
+            android:layout_height="109dp"
+            android:layout_gravity="center"
+
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toTopOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="306dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="6dp"
+            android:ems="10"
+            android:inputType="phone"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="Phone"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/service"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <EditText
+            android:id="@+id/service"
+            android:layout_width="306dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="Service"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/city"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="306dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="City"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/adresse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/service" />
+
+        <EditText
+            android:id="@+id/adresse"
+            android:layout_width="306dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="Address"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/city" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="306dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="E-mail"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/siteweb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adresse" />
+
+        <EditText
+            android:id="@+id/siteweb"
+            android:layout_width="306dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="Web-site"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="263dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/border"
+            android:onClick="save"
+            android:text="Valider"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/siteweb"
+            app:layout_constraintVertical_bias="0.578" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
