@@ -1,5 +1,7 @@
 package com.example.bricohouse.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,14 +11,19 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bricohouse.R;
 import com.example.bricohouse.bean.User;
+import com.example.bricohouse.util.SessionUtil;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainInscription extends AppCompatActivity {
@@ -27,6 +34,9 @@ public class MainInscription extends AppCompatActivity {
     User utilisateur=new User();
     Button valider;
     DatabaseReference reff;
+    User user;
+    public static final  String SHARED_PREFS = "sharedPrefs";
+    public static final  String USER_ID = "user_id" ;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +85,7 @@ public class MainInscription extends AppCompatActivity {
 
 
 
+
         //public void save(User utilisateur){
         // utilisateur.setLogin(utilisateur.getLogin());
     }
@@ -90,15 +101,32 @@ public class MainInscription extends AppCompatActivity {
      String pass= password.getText().toString();
       String tyUser=typeCompte.getSelectedItem().toString();
      utilisateur.setLogin(log);
-         Toast.makeText(MainInscription.this, "dekhel login:", Toast.LENGTH_LONG).show();
         utilisateur.setPassword(pass);
-         Toast.makeText(MainInscription.this, "ddekhel pass:", Toast.LENGTH_LONG).show();
          utilisateur.setTypeCompte(tyUser);
-         Toast.makeText(MainInscription.this, "dekhel type:", Toast.LENGTH_LONG).show();
+         reff.push().setValue(utilisateur);
+         System.out.println("haaaaahowaaaaa client =====>>   "+utilisateur);
 
-      reff.push().setValue(utilisateur);
-     Toast.makeText(MainInscription.this, "data inserted succesfully:", Toast.LENGTH_LONG).show();
+         session(utilisateur);
      }
+
+public void session(User utilisateur ){
+    //SessionUtil.setAttribute("login", utilisateur);
+    if(utilisateur.getTypeCompte().equalsIgnoreCase("Client")){
+        Toast.makeText(MainInscription.this, "dakhal l'Client", Toast.LENGTH_LONG).show();
+
+        final Intent i=new Intent(this, Inscription_client.class);
+        SessionUtil.setAttribute("login", utilisateur);
+
+        startActivity(i);
+    }
+    else {
+        Intent i = new Intent(this, MainInscriptionAgence.class);
+        startActivity(i);
+    }
+}
+
+
+
 
 
 }
