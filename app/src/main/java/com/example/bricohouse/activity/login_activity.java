@@ -33,8 +33,8 @@ public class login_activity extends AppCompatActivity {
     {
         if((Username.equals("oumaima"))&&(Userpassword.equals("1234")))
         {
-           // Intent intent=new Intent(bricoactivity.this,SecondActivity.class);
-           // startActivity(intent);
+            Intent intent=new Intent(login_activity.this,home.class);
+            startActivity(intent);
         }
         else if((Username!="oumaima")&&(Userpassword.equals("1234")))
         {
