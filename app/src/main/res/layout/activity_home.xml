@@ -52,6 +52,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Sign in"
+        android:onClick="signin"
         android:textColor="@color/colorPrimaryDark"
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
