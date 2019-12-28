@@ -24,17 +24,17 @@
 
     <TextView
         android:id="@+id/tv"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Welcome in our BricoHouse"
+        android:layout_width="254dp"
+        android:layout_height="114dp"
+        android:text="  Intrust your small DIY work  quickly and with confidence"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorBleu"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/logo"
-        app:layout_constraintVertical_bias="0.779" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
