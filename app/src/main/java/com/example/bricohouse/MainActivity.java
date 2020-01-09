@@ -19,17 +19,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv=(TextView) findViewById(R.id.tv);
+
         iv=(ImageView) findViewById(R.id.logo);
         Animation myanim= AnimationUtils.loadAnimation(this,R.anim.mytransition);
-        tv.startAnimation(myanim);
+
         iv.startAnimation(myanim);
         final Intent i=new Intent(this, home.class);
         Thread timer=new Thread(){
             public void run(){
 
                 try{
-                    sleep(2000);
+                    sleep(3000);
 
                 }catch(InterruptedException e){
                     e.printStackTrace();

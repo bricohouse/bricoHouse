@@ -54,6 +54,9 @@ public class login_activity extends AppCompatActivity {
         {
             password.setError("enter password");
         }
+        Intent intent=new Intent(login_activity.this, accueil.class);
+        startActivity(intent);
+
 
     }
 }

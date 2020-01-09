@@ -9,32 +9,14 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_gravity="center"
-
-
-        android:src="@drawable/logo"
+        android:layout_width="242dp"
+        android:layout_height="477dp"
+        android:layout_marginTop="116dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.591"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299" />
-
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="254dp"
-        android:layout_height="114dp"
-        android:text="  Intrust your small DIY work  quickly and with confidence"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/colorBleu"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logo"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintVertical_bias="0.257"
+        app:srcCompat="@drawable/mylogo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

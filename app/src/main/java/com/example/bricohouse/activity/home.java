@@ -21,4 +21,10 @@ public class home extends AppCompatActivity {
         Intent intent=new Intent(home.this,login_activity.class);
         startActivity(intent);
     }
+
+    public void signup(View view) {
+        Intent intent=new Intent(home.this,Inscription_client.class);
+        startActivity(intent);
+
+    }
 }
