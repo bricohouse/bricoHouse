@@ -1,8 +1,10 @@
 package com.example.bricohouse.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bricohouse.R;
 import com.example.bricohouse.bean.User;
 import com.example.bricohouse.util.SessionUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,35 +33,39 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainInscription extends AppCompatActivity {
-    Spinner spinner;
-    EditText login;
-    EditText password;
-    Spinner typeCompte;
-    User utilisateur=new User();
-    Button valider;
-    DatabaseReference reff;
-    User user;
-    public static final  String SHARED_PREFS = "sharedPrefs";
-    public static final  String USER_ID = "user_id" ;
+    private Button CreateAccountButton;
+    private EditText UserEmail, UserPassword;
+    private Spinner typeCompteSpinner;
+    private String currentUserID;
+    private FirebaseAuth mAuth;
+    private DatabaseReference RootRef;
+    private ProgressDialog loadingBar;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_main);
         setContentView(R.layout.inscription);
+        mAuth = FirebaseAuth.getInstance();
+        RootRef = FirebaseDatabase.getInstance().getReference();
 
-        spinner =(Spinner) findViewById(R.id.typeCompte);
+        loadingBar = new ProgressDialog(this);
+
+        CreateAccountButton = (Button) findViewById(R.id.register_button);
+        UserEmail = (EditText) findViewById(R.id.login);
+        UserPassword = (EditText) findViewById(R.id.password);
+        typeCompteSpinner = (Spinner) findViewById(R.id.typeCompte);
         List<String> list = new ArrayList<>();
         list.add("SELECT-ONE");
         list.add("Client");
         list.add("Agence");
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapt);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        typeCompteSpinner.setAdapter(adapt);
+        typeCompteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String itemValue =parent.getItemAtPosition(position).toString();
-                Toast.makeText(MainInscription.this, "select:"+itemValue, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainInscription.this, "select:"+itemValue, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -63,68 +73,95 @@ public class MainInscription extends AppCompatActivity {
 
             }
         });
-        login= (EditText) findViewById(R.id.login);
-        password= (EditText) findViewById(R.id.password);
-        typeCompte=(Spinner) spinner;
-        valider=(Button) findViewById(R.id.valider);
-        reff= FirebaseDatabase.getInstance().getReference();
-    // valider.setOnClickListener(new View.OnClickListener() {
-         //   @Override
-           // public void onClick(View view) {
-             //   String log= login.getText().toString();
-               // String pass= password.getText().toString();
-               // String tyUser=typeUser.getSelectedItem().toString();
-                //utilisateur.setLogin(log);
-          //      utilisateur.setPassword(pass);
-          //      utilisateur.setTypeUser(tyUser);
-                // save(utilisateur);
-         //       reff.push().setValue(utilisateur);
-         //       Toast.makeText(MainInscription.this, "data inserted succesfully:", Toast.LENGTH_LONG).show();
-        //   }
-        //});
+
+        CreateAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateNewAccount();
+            }
+        });
+    }
 
 
+    private void CreateNewAccount() {
+        String email = UserEmail.getText().toString();
+        String password = UserPassword.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Saisir votre email", Toast.LENGTH_LONG).show();
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Saisir un mot de passe", Toast.LENGTH_LONG).show();
+        } else {
+            loadingBar.setTitle("Création d'un nouveau compte");
+            loadingBar.setMessage("Veuillez attendre SVP ...");
+            loadingBar.setCanceledOnTouchOutside(true);
+            loadingBar.show();
 
+            if (typeCompteSpinner.getSelectedItem().toString().equals("Client")) {
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            String Email = mAuth.getCurrentUser().getEmail();
+                            final HashMap<String, Object> donnees = new HashMap<>();
+                            currentUserID = mAuth.getCurrentUser().getUid();
+                            donnees.put("user_id", currentUserID);
+                            donnees.put("Email", Email);
+                            donnees.put("TypeCompte", "Client");
 
-        //public void save(User utilisateur){
-        // utilisateur.setLogin(utilisateur.getLogin());
+                            RootRef.child("Users").child(currentUserID).setValue(donnees);
+
+                            SendUserToClientActivity();
+                            Toast.makeText(MainInscription.this, "Compte créé avec succés", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        } else {
+                            String message = task.getException().toString();
+                            Toast.makeText(MainInscription.this, "Erreur : " + message, Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        }
+                    }
+                });
+            } else {
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            String Email = mAuth.getCurrentUser().getEmail();
+                            final HashMap<String, Object> donnees = new HashMap<>();
+                            currentUserID = mAuth.getCurrentUser().getUid();
+                            donnees.put("user_id", currentUserID);
+                            donnees.put("Email", Email);
+                            donnees.put("TypeCompte", "Agence");
+
+                            RootRef.child("Users").child(currentUserID).setValue(donnees);
+                            SendUserToAgenceActivity();
+                            Toast.makeText(MainInscription.this, "Compte créé avec succés", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        } else {
+                            String message = task.getException().toString();
+                            Toast.makeText(MainInscription.this, "Erreur : " + message, Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        }
+                    }
+                });
+            }
+        }
     }
 
 
 
 
-//  utilisateur.setPassword(utilisateur.getPassword());
-
-    // }
-     public void save(View view) {
-      String log= login.getText().toString();
-     String pass= password.getText().toString();
-      String tyUser=typeCompte.getSelectedItem().toString();
-     utilisateur.setLogin(log);
-        utilisateur.setPassword(pass);
-         utilisateur.setTypeCompte(tyUser);
-         reff.push().setValue(utilisateur);
-         System.out.println("haaaaahowaaaaa client =====>>   "+utilisateur);
-
-         session(utilisateur);
-     }
-
-public void session(User utilisateur ){
-    //SessionUtil.setAttribute("login", utilisateur);
-    if(utilisateur.getTypeCompte().equalsIgnoreCase("Client")){
-        Toast.makeText(MainInscription.this, "dakhal l'Client", Toast.LENGTH_LONG).show();
-
-        final Intent i=new Intent(this, Inscription_client.class);
-        SessionUtil.setAttribute("login", utilisateur);
-
-        startActivity(i);
+    private void SendUserToClientActivity(){
+        Intent chauffeurIntent = new Intent(MainInscription.this,Inscription_client.class);
+        chauffeurIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(chauffeurIntent);
+        finish();
     }
-    else {
-        Intent i = new Intent(this, MainInscriptionAgence.class);
-        startActivity(i);
+    private void SendUserToAgenceActivity() {
+        Intent profilIntent = new Intent(MainInscription.this, MainInscriptionAgence.class);
+        profilIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(profilIntent);
+        finish();
     }
-}
-
 
 
 
