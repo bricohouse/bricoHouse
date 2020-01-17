@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_cat"
+        android:icon="@drawable/dashboard"
+        android:title="@string/categories" />
+    <item
+        android:id="@+id/nav_act"
+        android:icon="@drawable/list"
+        android:title="@string/activities" />
+    <item
+        android:id="@+id/nav_prof"
+        android:icon="@drawable/user"
+        android:title="@string/profile_nav" />
+</menu>

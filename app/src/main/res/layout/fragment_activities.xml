@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/activ"
+    android:orientation="vertical"
     tools:context=".activity.ActivitiesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="15dp"
+        app:civ_border_color="@color/colorBleu"
+        android:src="@drawable/moi"
+
+        android:layout_gravity="center"
+
+        />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="activities fragment" />
+        android:layout_height="44dp"
 
-</FrameLayout>
+
+        android:gravity="center"
+        android:text="Hello Nassira"
+        android:textColor="#ffffff"
+        android:textSize="24dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+
+        android:background="@drawable/textline"
+        android:gravity="center"
+        android:text="My Notifications"
+        android:textSize="18dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+
+        android:background="@drawable/textline"
+        android:gravity="center"
+        android:text=""
+        android:textSize="18dp" />
+
+
+
+
+</LinearLayout>
