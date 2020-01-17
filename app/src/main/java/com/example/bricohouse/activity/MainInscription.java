@@ -40,6 +40,7 @@ public class MainInscription extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
     private ProgressDialog loadingBar;
+    public static  final  String EXTRA_MESSAGE_KEY = "com.example.bricohouse.extra.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +158,8 @@ public class MainInscription extends AppCompatActivity {
         finish();
     }
     private void SendUserToAgenceActivity() {
-        Intent profilIntent = new Intent(MainInscription.this, MainInscriptionAgence.class);
+        Intent profilIntent = new Intent(MainInscription.this, Inscription_agence.class);
+
         profilIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(profilIntent);
         finish();
