@@ -2,4 +2,10 @@
     <string name="app_name">BricoHouse</string>
     <string name="login_perfernce">com.example.bricohouse_login_perfernce"</string>
     <string name="login_status_perfernce">com.example.bricohouse_login_status_perfernce"</string>
+
+    <string name="categories">categories</string>
+    <string name="activities">activities</string>
+    <string name="profile_nav">profile_nav</string>
+
+
 </resources>

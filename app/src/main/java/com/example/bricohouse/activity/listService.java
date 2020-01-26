@@ -51,18 +51,39 @@ public class listService extends AppCompatActivity {
         if("selected_topic".equals("Jardin et exterieur")){
             findServicesByCategorie("ServicesJardin");
         }
-
-       else{
+        if("selected_topic".equals("Connected home and Comfort")){
+            findServicesByCategorie("Service-Maison");
+        }
+        if (("Electricity and Lighting").equals("selected_topic") ) {
+            findServicesByCategorie("Service-electricity");
+        }
+        if (("Garden and Outdoor").equals("selected_topic") ) {
+            findServicesByCategorie("Service-Garden-and-outdoor");
+        }
+        if (("General Services").equals("selected_topic") ) {
+            findServicesByCategorie("Service-Generaux");
+        }
+        if (("Painting,Floor and Wall").equals("selected_topic") ) {
+            findServicesByCategorie("Service-Painting");
+        }
+        if (("Plumbing and Kitchen").equals("selected_topic") ) {
+            findServicesByCategorie("Service-Plumbing");
+        }
+        if (("Small Works").equals("selected_topic") ) {
+            findServicesByCategorie("service_Odd-jobs");
+        }
+        else{
             findServicesByCategorie("ServicesTravaux");
         }
 //___________________________________________________________________________________________________________
-        lvServices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+      /*  lvServices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(listService.this, listAgence.class);
+             //   Intent i = new Intent(listService.this, listAgence.class);
                 i.putExtra("selected_topic", ((TextView)view).getText().toString());
                 startActivity(i);
             }
-        });
+        });*/
     }
 public void findServicesByCategorie(String lServices){
 

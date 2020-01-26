@@ -15,9 +15,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.bricohouse.R;
-import com.example.bricohouse.api.SecteurHelper;
-import com.example.bricohouse.api.ServiceHelper;
-import com.example.bricohouse.api.VilleHelper;
 import com.example.bricohouse.bean.Agence;
 import com.example.bricohouse.bean.Secteur;
 import com.example.bricohouse.bean.Service;
@@ -55,26 +52,24 @@ public class Inscription_agence extends AppCompatActivity {
     ArrayAdapter<String> adapt;
     ArrayAdapter<String> adaptVille;
     ArrayAdapter adaptServ;
-    EditText naame;
+
     Spinner ville;
-    EditText adrs;
-    EditText tel;
-    EditText mail;
+    EditText discription;
+
+
     Spinner service;
     Spinner catego;
     Button inscp;
     String login;
     String pass;
-    ServiceHelper serviceHelper = new ServiceHelper();
-    VilleHelper villeHelper = new VilleHelper();
-    SecteurHelper secteurHelper= new SecteurHelper();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription_agence);
         RootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-        currentUserID = mAuth.getCurrentUser().getUid();
+//        currentUserID = mAuth.getCurrentUser().getUid();
         //----------------------SpinnerCategorie------------------------------
         cateSpinner=(Spinner) findViewById(R.id.categorie);
          adapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,listOFcategories);
@@ -216,10 +211,10 @@ public class Inscription_agence extends AppCompatActivity {
             }
         });
 
-        naame= (EditText) findViewById(R.id.Name);
+
         ville= (Spinner) villeSpinner;
-        adrs= (EditText) findViewById(R.id.adresse);
-        tel= (EditText) findViewById(R.id.phone);
+        discription= (EditText) findViewById(R.id.discription);
+
        // mail= (EditText) findViewById(R.id.email);
         service=(Spinner) serviceSpinner;
         catego=(Spinner) cateSpinner;
@@ -239,67 +234,40 @@ public class Inscription_agence extends AppCompatActivity {
 
 
     private void SaveClient() {
+        final HashMap<String, Object> annances = new HashMap<>();
 
 
-
-
-        final HashMap<String, Object> agences = new HashMap<>();
-        final String nom= naame.getText().toString();
-        System.out.println("hahowa name"+nom);
         final String city= (String) ville.getSelectedItem();
         final String categorie= (String) catego.getSelectedItem();
-        final String adress= adrs.getText().toString();
-        final String pho= tel.getText().toString();
+        final String descr= discription.getText().toString();
         final String ser=(String) service.getSelectedItem();
 
 
-        agences.put("user_id", currentUserID);
-        agences.put("nom", nom);
-        agences.put("ville", city);
-        agences.put("phone", pho);
-        agences.put("adress", adress);
-        agences.put("service", ser);
-        agences.put("categorie", categorie);
 
-        if ((TextUtils.isEmpty(nom)) ) {
-            Toast.makeText(this, "Entrez le nom de votre Agence , svp!", Toast.LENGTH_LONG).show();
+        annances.put("ville", city);
+        annances.put("description", descr);
+        annances.put("service", ser);
+        annances.put("categorie", categorie);
 
-        } else {
-            RootRef.child("Users").child(currentUserID).child("TypeCompte").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue().equals("Agence")) {
-
-                        RootRef.child("Agence").child(currentUserID).setValue(agences)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(Inscription_agence.this, "votre compte est bien cree", Toast.LENGTH_SHORT).show();
-                                            SendUserToPrincipalActivity();
-                                        } else {
-                                            String message = task.getException().toString();
-                                            Toast.makeText(Inscription_agence.this, "Erreur: " + message, Toast.LENGTH_LONG).show();
-                                        }
-                                    }
-                                });
-
-                    }else{
-                        Toast.makeText(Inscription_agence.this, "Veuillez Compléter votre Inscription", Toast.LENGTH_SHORT).show();
+        RootRef.child("Annance").setValue(annances)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Inscription_agence.this, "votre compte est bien cree", Toast.LENGTH_SHORT).show();
+                            SendUserToPrincipalActivity();
+                        } else {
+                            String message = task.getException().toString();
+                            Toast.makeText(Inscription_agence.this, "Erreur: " + message, Toast.LENGTH_LONG).show();
+                        }
                     }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                });
 
-                }
 
-            });
-
-        }
     }
 
     private void SendUserToPrincipalActivity() {
-        Intent principalIntent = new Intent(Inscription_agence.this,Inscription_client.class);
+        Intent principalIntent = new Intent(Inscription_agence.this,accueil.class);
         startActivity(principalIntent);
     }
     private void findSeviceByCategorie(String lServices){
