@@ -3,13 +3,9 @@
     <string name="login_perfernce">com.example.bricohouse_login_perfernce"</string>
     <string name="login_status_perfernce">com.example.bricohouse_login_status_perfernce"</string>
 
+    <string name="categories">categories</string>
+    <string name="activities">activities</string>
+    <string name="profile_nav">profile_nav</string>
 
-    <string name="profile_nav">profile</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="categories">Categories</string>
-    <string name="activities">Activities</string>
-    <string name="bonjour_nassira">Bonjour Nassira</string>
-    <string name="de_quoi_avez_vous_besoin_aujourd_hui">De quoi avez-vous besoin aujourd\'hui?</string>
 </resources>
