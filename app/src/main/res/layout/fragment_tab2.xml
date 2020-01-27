@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content_main1"
+    tools:context=".activity.tab2">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:hint="Your address please.."
+            android:textSize="20sp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edit3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:hint="Ex:37 RUE OUMNIA SAFI" />
+
+
+
+
+        <Button
+            android:id="@+id/butt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Next"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textAllCaps="true"
+            android:background="@drawable/btn_bg"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="28dp"
+            android:layout_marginLeft="28dp"
+            android:ems="10"
+            />
+    </LinearLayout>
+</FrameLayout>
